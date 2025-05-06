@@ -26,6 +26,7 @@ venv/
 ENV/
 env/
 .env
+fintrack_v1/
 
 # IDE
 .idea/
