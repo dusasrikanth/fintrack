@@ -84,6 +84,7 @@ coverage.xml
 *.cover
 .hypothesis/
 .pytest_cache/
+__pycache__
 
 # Jupyter Notebook
 .ipynb_checkpoints
@@ -110,3 +111,10 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/ 
+
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate.backup
+terraform/terraform.tfstate
+
