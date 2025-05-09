@@ -11,7 +11,7 @@ from sqlalchemy import func
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your-secret-key-here'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://appuser:root@localhost:5432/transactions'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://appuser:password@localhost:5432/transactions'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///transactions.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
