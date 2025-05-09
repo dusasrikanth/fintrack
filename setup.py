@@ -9,5 +9,6 @@ setup(
         "flask-sqlalchemy",
         "psutil",
         "python-dotenv",
+        "psycopg2-binary"
     ],
 ) 
