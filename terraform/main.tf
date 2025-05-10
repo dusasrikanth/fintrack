@@ -11,13 +11,23 @@ resource "aws_vpc" "realops-vpc" {
   }
 }
 
-# Subnet
+# Subnet 1
 resource "aws_subnet" "realops-public-subnet1" {
   vpc_id            = aws_vpc.realops-vpc.id
   cidr_block        = var.realops-public-subnet1_cidr
   availability_zone = "ap-south-1a"
   tags = {
     Name = "${var.realops-public-subnet1}"
+  }
+}
+
+# Subnet 2
+resource "aws_subnet" "realops-public-subnet2" {
+  vpc_id            = aws_vpc.realops-vpc.id
+  cidr_block        = var.realops-public-subnet2_cidr
+  availability_zone = "ap-south-1b"
+  tags = {
+    Name = "${var.realops-public-subnet2}"
   }
 }
 
@@ -72,6 +82,19 @@ resource "aws_vpc_security_group_ingress_rule" "postgresDB-inbound" {
   to_port     = 5432
 
 }
+
+# Inbound security Group Rule 3
+resource "aws_vpc_security_group_ingress_rule" "app_port" {
+  security_group_id = aws_security_group.realops-sg1.id
+
+  cidr_ipv4   = "0.0.0.0/0"
+  description = "Allow 5432"
+  from_port   = 5001
+  ip_protocol = "tcp"
+  to_port     = 5001
+
+}
+
 
 # Outbound security group rule 1
 resource "aws_vpc_security_group_egress_rule" "Outbound-any" {

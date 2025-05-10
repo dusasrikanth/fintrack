@@ -5,6 +5,7 @@ resource "aws_instance" "fintrack-app" {
   vpc_security_group_ids      = [aws_security_group.realops-sg1.id]
   associate_public_ip_address = true
   key_name                    = "connect"
+  user_data                   = file("./scripts/user-data.sh")
   tags = {
     Name = "fintrack-app"
     env  = "dev"
