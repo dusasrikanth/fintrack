@@ -146,7 +146,7 @@ CREATE USER appuser WITH PASSWORD 'password';
 ```
 5. Assign privileges for the appuser to perform operations on database.
 ```bash
-\c transactions
+\c transactions;
 ```
 ```bash
 GRANT ALL PRIVILEGES ON DATABASE transactions TO appuser;
