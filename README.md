@@ -128,6 +128,37 @@ This is a development version. For production use:
 4. Use environment variables for sensitive configuration
 5. Consider using a more robust database like PostgreSQL
 
+## Use PostgeSQL as DB
+
+This is a development version. For production use:
+1. Create a PostgreSQL DB instance.
+2. Connect to your PostgreSQL as superuser.
+```bash
+psql -U postgres
+```
+3. Create a database for the application
+```bash
+CREATE DATABASE transactions;
+```
+4. Create a application user with password.
+```bash
+CREATE USER appuser WITH PASSWORD 'password';
+```
+5. Assign privileges for the appuser to perform operations on database.
+```bash
+\c transactions
+```
+```bash
+GRANT ALL PRIVILEGES ON DATABASE transactions TO appuser;
+```
+```bash
+GRANT CREATE ON SCHEMA public TO appuser;
+```
+6. In the `app.py`, replace the value of `app.config['SQLALCHEMY_DATABASE_URI']` with PostgreSQL connection string.
+```bash
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://appuser:password@db-host-name/transactions'
+```
+
 ## Run Using Docker
 
 1. Build the Docker image:
