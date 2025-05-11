@@ -1,0 +1,18 @@
+FROM python:3.12.10-slim-bookworm
+
+WORKDIR /app
+
+RUN addgroup --system appgroup && \
+    adduser --system --ingroup appgroup --no-create-home appuser
+
+COPY . .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+RUN chown -R appuser:appgroup /app
+
+USER appuser
+
+EXPOSE 5001
+
+CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5001", "--workers", "4"]
