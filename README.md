@@ -126,4 +126,15 @@ This is a development version. For production use:
 2. Use a proper production-grade WSGI server (as shown above)
 3. Implement proper user authentication
 4. Use environment variables for sensitive configuration
-5. Consider using a more robust database like PostgreSQL 
+5. Consider using a more robust database like PostgreSQL
+
+## Run Using Docker
+
+1. Build the Docker image:
+```bash
+docker build -t fintrack:v1 -f Dockerfile_v1 .
+```
+2. Run the container:
+```bash
+docker run -d --rm --name fintrack -p 5001:5001 --name fintrack:v1
+```
